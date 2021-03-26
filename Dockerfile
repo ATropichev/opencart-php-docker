@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y \
 		libzip-dev \
 	&& docker-php-ext-configure gd --with-freetype --with-jpeg \
 	&& docker-php-ext-configure zip \
-	&& docker-php-ext-configure zip \
+	&& docker-php-ext-configure mysqli \
 	&& docker-php-ext-install -j$(nproc) gd zip mysqli
+RUN a2dismod rpaf \
+	&& a2enmod remoteip \
+	&& a2enmod rewrite
 RUN rm -rf /var/www/html
