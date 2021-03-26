@@ -9,9 +9,7 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-configure mysqli \
 	&& docker-php-ext-install -j$(nproc) gd zip mysqli
 RUN a2enmod remoteip \
-    && echo '<IfModule mod_remoteip.c>\
-        RemoteIPHeader X-Real-IP\
-        RemoteIPInternalProxy 127.0.0.1 nginx\
-</IfModule>' > /etc/apache2/mods-enabled/remoteip.conf \
+    && printf '<IfModule mod_remoteip.c>\n\tRemoteIPHeader X-Real-IP\n\tRemoteIPInternalProxy 127.0.0.1 nginx\n\t</IfModule>' \
+    		> /etc/apache2/mods-enabled/remoteip.conf \
     && a2enmod rewrite
 RUN rm -rf /var/www/html
