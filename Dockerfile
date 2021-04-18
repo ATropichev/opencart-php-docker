@@ -8,6 +8,9 @@ RUN apt-get update && apt-get install -y \
 	&& docker-php-ext-configure zip \
 	&& docker-php-ext-configure mysqli \
 	&& docker-php-ext-install -j$(nproc) gd zip mysqli
+#Add xdebug support
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
 RUN a2enmod remoteip \
     && printf '<IfModule mod_remoteip.c>\n\tRemoteIPHeader X-Real-IP\n\tRemoteIPInternalProxy 127.0.0.1 nginx\n</IfModule>' \
     		> /etc/apache2/mods-enabled/remoteip.conf \
