@@ -11,10 +11,10 @@ RUN apt-get update && apt-get install -y \
 #Add xdebug support
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug
-RUN a2enmod remoteip \
-    && printf '<IfModule mod_remoteip.c>\n\tRemoteIPHeader X-Real-IP\n\tRemoteIPInternalProxy 127.0.0.1 nginx\n</IfModule>' \
-    		> /etc/apache2/mods-enabled/remoteip.conf \
-    && a2enmod rewrite
+#RUN a2enmod remoteip \
+#    && printf '<IfModule mod_remoteip.c>\n\tRemoteIPHeader X-Real-IP\n\tRemoteIPInternalProxy 127.0.0.1 nginx\n</IfModule>' \
+#    		> /etc/apache2/mods-enabled/remoteip.conf \
+RUN a2enmod rewrite
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 # Add xdebug configuration
