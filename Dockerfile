@@ -19,16 +19,16 @@ RUN a2enmod remoteip \
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 # Add xdebug configuration intoo php.ini
 RUN printf '[xdebug]\n\
-zend_extension=xdebug.so\n\
-xdebug.profiler_enable=1\n\
-xdebug.remote_enable=1\n\
-xdebug.remote_handler=dbgp\n\
-xdebug.remote_mode=req\n\
-xdebug.remote_host=host.docker.internal\n\
-xdebug.remote_port=9000\n\
-xdebug.remote_autostart=1\n\
-xdebug.remote_connect_back=1\n\
-xdebug.idekey=PHPSTORM' \
+	;zend_extension=xdebug.so\n\
+	xdebug.profiler_enable=1\n\
+	xdebug.remote_enable=1\n\
+	xdebug.remote_handler=dbgp\n\
+	xdebug.remote_mode=req\n\
+	xdebug.remote_host=host.docker.internal\n\
+	xdebug.remote_port=9000\n\
+	xdebug.remote_autostart=1\n\
+	xdebug.remote_connect_back=1\n\
+	xdebug.idekey=PHPSTORM\n' \
     		>> $PHP_INI_DIR/php.ini
 
 RUN rm -rf /var/www/html
