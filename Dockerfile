@@ -11,16 +11,16 @@ RUN apt-get update && apt-get install -y \
 #Add xdebug support
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \
-    && printf '[xdebug]\
-zend_extension=xdebug.so
-xdebug.profiler_enable=1
-xdebug.remote_enable=1
-xdebug.remote_handler=dbgp
-xdebug.remote_mode=req
-xdebug.remote_host=host.docker.internal
-xdebug.remote_port=9000
-xdebug.remote_autostart=1
-xdebug.remote_connect_back=1
+    && printf '[xdebug]\n\
+zend_extension=xdebug.so\n\
+xdebug.profiler_enable=1\n\
+xdebug.remote_enable=1\n\
+xdebug.remote_handler=dbgp\n\
+xdebug.remote_mode=req\n\
+xdebug.remote_host=host.docker.internal\n\
+xdebug.remote_port=9000\n\
+xdebug.remote_autostart=1\n\
+xdebug.remote_connect_back=1\n\
 xdebug.idekey=PHPSTORM' \
     		> $PHP_INI_DIR/conf.d/docker-php-ext-xdebug.ini
 RUN a2enmod remoteip \
