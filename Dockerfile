@@ -16,5 +16,5 @@ RUN a2enmod remoteip \
     		> /etc/apache2/mods-enabled/remoteip.conf \
     && a2enmod rewrite
 # Use the default production configuration
-RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 RUN rm -rf /var/www/html
