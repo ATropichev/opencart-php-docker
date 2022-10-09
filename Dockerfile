@@ -3,6 +3,7 @@ RUN apt-get update && apt-get install -y \
 		libfreetype6-dev \
 		libjpeg62-turbo-dev \
 		libpng-dev \
+		libwebp-dev \
 		libzip-dev \
 	&& docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype \
 	&& docker-php-ext-configure zip \
