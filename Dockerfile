@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y \
 		libjpeg62-turbo-dev \
 		libpng-dev \
 		libzip-dev \
-	&& docker-php-ext-configure gd --with-jpeg-dir --with-png-dir \
+	&& docker-php-ext-configure gd --with-jpeg --with-png \
 	&& docker-php-ext-configure zip \
 	&& docker-php-ext-configure mysqli \
 	&& docker-php-ext-install -j$(nproc) gd zip mysqli
