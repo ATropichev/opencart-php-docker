@@ -15,4 +15,6 @@ RUN a2enmod remoteip \
     && a2enmod rewrite
 # Use the default production configuration
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+# Increase php memory_limit up to 128Mb
+RUN echo 'memory_limit = 128M' >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini
 RUN rm -rf /var/www/html
