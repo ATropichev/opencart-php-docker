@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y \
 		libpng-dev \
 		libwebp-dev \
 		libzip-dev \
-	&& docker-php-ext-configure gd --with-jpeg --with-webp --with-freetype \
+	&& docker-php-ext-configure gd --with-jpeg-dir --with-webp-dir --with-freetype-dir \
 	&& docker-php-ext-configure zip \
 	&& docker-php-ext-configure mysqli \
 	&& docker-php-ext-install -j$(nproc) gd zip mysqli
